@@ -1,18 +1,23 @@
 <template>
-  <div class="bg-white py-24 sm:py-32">
-    <div class="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8">
-      <div class="max-w-5xl">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Meet our leadership</h2>
-        <p class="mt-6 text-lg leading-8 text-gray-600">Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae elementum enim vitae ullamcorper suspendisse.</p>
+  <div class="bg-white py-24">
+    <div class="bg-gray-100 mx-auto grid max-w-4xl gap-x-8 gap-y-20 p-6 lg:p-8 rounded-lg">
+      <div class="bg-gray-300 mx-auto max-w-2xl p-4 rounded-xl">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">some profiles</h2>
+        <p class="text-blue-500 font-bold">you can visit the profiles by clicking the Link button underneath each card</p>
       </div>
-      <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 md:grid-cols-3">
-        <li v-for="person in people" :key="person.name">
-          <div class="flex flex-col items-center gap-x-6">
-            <img class="h-48 w-48 md:h-32 md:w-32 rounded-full" :src="person.imageUrl" alt="" />
-            <div>
-              <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{ person.name }}</h3>
-              <p class="text-sm font-semibold leading-6 text-indigo-600">{{ person.role }}</p>
-            </div>
+      <h3>Instructors</h3>
+      <ul role="list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 items-center">
+        <li v-for="instructor in instructors" :key="instructor.name">
+          <div class="gap-x-20">
+            <ProfileCard :data="instructor" />
+          </div>
+        </li>
+      </ul>
+      <h3>Students</h3>
+      <ul role="list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 items-center">
+        <li v-for="student in students" :key="student.name">
+          <div class="gap-x-20">           
+            <ProfileCard :data="student" />
           </div>
         </li>
       </ul>
@@ -21,54 +26,45 @@
 </template>
 
 <script setup>
-const people = [
+import ProfileCard from './components/ProfileCard.vue';
+
+const instructors = [
   {
-    name: 'Leslie Alexander',
-    role: 'Co-Founder / CEO',
+    name: 'Johan Sulaiman',
+    role: 'Founder',
+    link: 'https://www.linkedin.com/in/jon-lai-b8019b101/',
     imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      'https://avatars.githubusercontent.com/u/3628963?v=4',
   },
   {
-    name: 'Leslie Alexander',
-    role: 'Co-Founder / CEO',
+    name: 'Herry',
+    role: 'CEO',
+    link: 'https://www.linkedin.com/in/jon-lai-b8019b101/',
     imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      'https://avatars.githubusercontent.com/u/832202?s=40&v=4',
+  },
+]
+
+const students = [
+  {
+    name: 'Jonathan Lai',
+    role: 'LinkedIn',
+    link: 'https://www.linkedin.com/in/jon-lai-b8019b101/',
+    imageUrl:
+      'https://media.licdn.com/dms/image/C5603AQEp8DNZ7K8uqw/profile-displayphoto-shrink_400_400/0/1613878440743?e=1688601600&v=beta&t=VkIAbUN2JXUlaRBB9L1zf4GyVCNtFgaEH4Vs0q9ZVuM',
   },
   {
-    name: 'Leslie Alexander',
-    role: 'Co-Founder / CEO',
+    name: "Mina Ali",
+    role: "Cool CEO",
     imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      "https://images.unsplash.com/photo-1683322001857-f4d932a40672?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=684&q=80",
   },
   {
-    name: 'Leslie Alexander',
-    role: 'Co-Founder / CEO',
+    name: 'Eian Lai',
+    role: 'Github',
+    link: 'https://www.linkedin.com/in/jon-lai-b8019b101/',
     imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Leslie Alexander',
-    role: 'Co-Founder / CEO',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Leslie Alexander',
-    role: 'Co-Founder / CEO',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Leslie Alexander',
-    role: 'Co-Founder / CEO',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Leslie Alexander',
-    role: 'Co-Founder / CEO',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
+      'https://avatars.githubusercontent.com/u/92978503?v=4',
+  }
 ]
 </script>
